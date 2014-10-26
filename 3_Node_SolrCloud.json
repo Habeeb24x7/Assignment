@@ -34,20 +34,7 @@
       "Metadata": {
         "AWS::CloudFormation::Init": {
           "config": {
-            "packages": {
-              "yum": {
-                "puppet": [],
-                "ruby-devel": [],
-                "gcc": [],
-                "make": [],
-                "rubygems": []
-              },
-              "rubygems": {
-                "json": []
-              }
-            },
             "sources": {
-              "/etc/puppet": "https://github.com/Habeeb24x7/Puppet/zipball/master",
               "/tmp/zookeeper": "http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz",
               "/tmp/solr": "http://apache.mirror.uber.com.au/lucene/solr/4.10.1/solr-4.10.1.tgz",
               "/tmp/tomcat": "http://apache.mirror.uber.com.au/tomcat/tomcat-7/v7.0.56/bin/apache-tomcat-7.0.56.tar.gz",
@@ -65,12 +52,6 @@
                 "mode": "000644",
                 "owner": "root",
                 "group": "root"
-              }
-            },
-            "commands": {
-              "puppetrun": {
-                "command": "puppet apply /etc/puppet/manifests/site.pp",
-                "cwd": "~"
               }
             }
           }
@@ -114,8 +95,6 @@
                     "SecretAccessKey"
                   ]
                 },
-                "\n",
-                "puppet apply /etc/puppet/manifests/site.pp",
                 "\n",
                 "chmod 755 /tmp/hhconfig/hh.sh",
                 "\n",
@@ -138,20 +117,7 @@
       "Metadata": {
         "AWS::CloudFormation::Init": {
           "config": {
-            "packages": {
-              "yum": {
-                "puppet": [],
-                "ruby-devel": [],
-                "gcc": [],
-                "make": [],
-                "rubygems": []
-              },
-              "rubygems": {
-                "json": []
-              }
-            },
             "sources": {
-              "/etc/puppet": "https://github.com/Habeeb24x7/Puppet/zipball/master",
               "/tmp/zookeeper": "http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz",
               "/tmp/solr": "http://apache.mirror.uber.com.au/lucene/solr/4.10.1/solr-4.10.1.tgz",
               "/tmp/tomcat": "http://apache.mirror.uber.com.au/tomcat/tomcat-7/v7.0.56/bin/apache-tomcat-7.0.56.tar.gz",
@@ -169,12 +135,6 @@
                 "mode": "000644",
                 "owner": "root",
                 "group": "root"
-              }
-            },
-            "commands": {
-              "puppetrun": {
-                "command": "puppet apply /etc/puppet/manifests/site.pp",
-                "cwd": "~"
               }
             }
           }
@@ -218,8 +178,6 @@
                     "SecretAccessKey"
                   ]
                 },
-                "\n",
-                "puppet apply /etc/puppet/manifests/site.pp",
                 "\n",
                 "echo 2 > /opt/zookeeper/tmp/myid",
                 "\n",
@@ -244,20 +202,7 @@
       "Metadata": {
         "AWS::CloudFormation::Init": {
           "config": {
-            "packages": {
-              "yum": {
-                "puppet": [],
-                "ruby-devel": [],
-                "gcc": [],
-                "make": [],
-                "rubygems": []
-              },
-              "rubygems": {
-                "json": []
-              }
-            },
             "sources": {
-              "/etc/puppet": "https://github.com/Habeeb24x7/Puppet/zipball/master",
               "/tmp/zookeeper": "http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz",
               "/tmp/solr": "http://apache.mirror.uber.com.au/lucene/solr/4.10.1/solr-4.10.1.tgz",
               "/tmp/tomcat": "http://apache.mirror.uber.com.au/tomcat/tomcat-7/v7.0.56/bin/apache-tomcat-7.0.56.tar.gz",
@@ -276,12 +221,6 @@
                 "owner": "root",
                 "group": "root"
               }
-            },
-            "commands": {
-              "puppetrun": {
-                "command": "puppet apply /etc/puppet/manifests/site.pp",
-                "cwd": "~"
-              }
             }
           }
         }
@@ -291,7 +230,7 @@
         "InstanceType": "t1.micro",
         "AvailabilityZone": {
           "Fn::Select": [
-            "0",
+            "1",
             {
               "Fn::GetAZs": ""
             }
@@ -325,8 +264,6 @@
                   ]
                 },
                 "\n",
-                "puppet apply /etc/puppet/manifests/site.pp",
-                "\n",
                 "echo 3 > /opt/zookeeper/tmp/myid",
                 "\n",
                 "chmod 755 /tmp/hhconfig/hh.sh",
@@ -337,7 +274,7 @@
             ]
           }
         },
-        "PrivateIpAddress": "172.31.3.113",
+        "PrivateIpAddress": "172.31.19.113",
         "SecurityGroups": [
           {
             "Ref": "SolrSecurityGroup"
