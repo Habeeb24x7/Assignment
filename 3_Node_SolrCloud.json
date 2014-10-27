@@ -1,6 +1,14 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "A simple stack that launches an instance.",
+  "Description": "A complex stack that creates a 3 node SolrCloud cluster on Zookeeper and is then load balanced.",
+    "Parameters": {
+    "KeyName": {
+      "Default": "habeeb-key-pair-sydney",
+      "Description": "The EC2 Key Pair to allow SSH access to the instances",
+      "Type": "String"
+    }
+    
+  },
   "Resources": {
     "CFNInitUser": {
       "Type": "AWS::IAM::User",
@@ -336,7 +344,7 @@
     "SolrSecurityGroup": {
       "Type": "AWS::EC2::SecurityGroup",
       "Properties": {
-        "GroupDescription": "Enable SSH access and all traffic from other Solr servers",
+        "GroupDescription": "Enable SSH access and all traffic within the subnet",
         "SecurityGroupIngress": [
           {
             "IpProtocol": "tcp",
@@ -363,7 +371,7 @@
     "ELBSecurityGroup": {
       "Type": "AWS::EC2::SecurityGroup",
       "Properties": {
-        "GroupDescription": "Security group for the Arena dev stack",
+        "GroupDescription": "Security group for ELB",
         "SecurityGroupIngress": [
           {
             "IpProtocol": "-1",
@@ -388,7 +396,7 @@
                 "ElasticLoadBalancer",
                 "DNSName"
               ]
-            }
+            },"/solr"
           ]
         ]
       }
