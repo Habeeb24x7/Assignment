@@ -89,7 +89,7 @@
               "/tmp/zookeeper": "http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz",
               "/tmp/solr": "http://apache.mirror.uber.com.au/lucene/solr/4.10.1/solr-4.10.1.tgz",
               "/tmp/tomcat": "http://apache.mirror.uber.com.au/tomcat/tomcat-7/v7.0.56/bin/apache-tomcat-7.0.56.tar.gz",
-              "/tmp/hhconfig": "https://github.com/Habeeb24x7/Configurations/zipball/master"
+              "/tmp/hhconfig": "https://github.com/Habeeb24x7/Assignment/zipball/master"
             },
             "files": {
               "/opt/solr_home/war/.hello": {
@@ -172,7 +172,7 @@
               "/tmp/zookeeper": "http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz",
               "/tmp/solr": "http://apache.mirror.uber.com.au/lucene/solr/4.10.1/solr-4.10.1.tgz",
               "/tmp/tomcat": "http://apache.mirror.uber.com.au/tomcat/tomcat-7/v7.0.56/bin/apache-tomcat-7.0.56.tar.gz",
-              "/tmp/hhconfig": "https://github.com/Habeeb24x7/Configurations/zipball/master"
+              "/tmp/hhconfig": "https://github.com/Habeeb24x7/Assignment/zipball/master"
             },
             "files": {
               "/opt/solr_home/war/.hello": {
@@ -257,7 +257,7 @@
               "/tmp/zookeeper": "http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz",
               "/tmp/solr": "http://apache.mirror.uber.com.au/lucene/solr/4.10.1/solr-4.10.1.tgz",
               "/tmp/tomcat": "http://apache.mirror.uber.com.au/tomcat/tomcat-7/v7.0.56/bin/apache-tomcat-7.0.56.tar.gz",
-              "/tmp/hhconfig": "https://github.com/Habeeb24x7/Configurations/zipball/master"
+              "/tmp/hhconfig": "https://github.com/Habeeb24x7/Assignment/zipball/master"
             },
             "files": {
               "/opt/solr_home/war/.hello": {
