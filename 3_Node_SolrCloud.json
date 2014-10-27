@@ -29,6 +29,57 @@
         }
       }
     },
+    "ElasticLoadBalancer": {
+      "Type": "AWS::ElasticLoadBalancing::LoadBalancer",
+      "Properties": {
+        "AvailabilityZones": {
+          "Fn::GetAZs": ""
+        },
+        "Instances": [
+          {
+            "Ref": "Solr1Instance"
+          },
+          {
+            "Ref": "Solr2Instance"
+          },
+          {
+            "Ref": "Solr3Instance"
+          }
+        ],
+        "CrossZone": "true",
+        "Listeners": [
+          {
+            "LoadBalancerPort": "80",
+            "InstancePort": "8080",
+            "Protocol": "HTTP"
+          }
+        ],
+        "HealthCheck": {
+          "Target": {
+            "Fn::Join": [
+              "",
+              [
+                "HTTP:",
+                "8080",
+                "/"
+              ]
+            ]
+          },
+          "HealthyThreshold": "3",
+          "UnhealthyThreshold": "5",
+          "Interval": "30",
+          "Timeout": "5"
+        },
+        "SecurityGroups": [
+          {
+            "Fn::GetAtt": [
+              "ELBSecurityGroup",
+              "GroupId"
+            ]
+          }
+        ]
+      }
+    },
     "Solr1Instance": {
       "Type": "AWS::EC2::Instance",
       "Metadata": {
@@ -303,8 +354,42 @@
             "IpProtocol": "-1",
             "FromPort": "-1",
             "ToPort": "-1",
-            "CidrIp": "172.31.3.1/16"
+            "CidrIp": "172.31.0.0/16"
           }
+
+        ]
+      }
+    },
+    "ELBSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Security group for the Arena dev stack",
+        "SecurityGroupIngress": [
+          {
+            "IpProtocol": "-1",
+            "FromPort": "1",
+            "ToPort": "-1",
+            "CidrIp": "0.0.0.0/0"
+          }
+        ]
+      }
+    }
+  },
+  "Outputs": {
+    "URL": {
+      "Description": "URL of the website",
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "http://",
+            {
+              "Fn::GetAtt": [
+                "ElasticLoadBalancer",
+                "DNSName"
+              ]
+            }
+          ]
         ]
       }
     }
